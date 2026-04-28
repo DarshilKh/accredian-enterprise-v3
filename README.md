@@ -22,22 +22,28 @@
 
 ---
 
+## ⚡ Tech Stack
+
+| Layer | Technology | Why |
+|---|---|---|
+| Framework | Next.js 16.2 (App Router) | Full-stack React framework with SSR, routing, and API built-in |
+| Language | TypeScript 5 | Type safety — catches bugs before runtime |
+| UI Library | React 19 | Component-based UI with hooks for state and effects |
+| Styling | Tailwind CSS 3 + Inline Styles | Utility-first CSS for rapid, responsive layouts |
+| API | Next.js Route Handlers | Built-in backend — no separate server needed |
+| Storage | In-memory (server array) | Simple lead capture without DB setup |
+| Deployment | Vercel | Native Next.js hosting, zero config |
+
+---
+
 ## 🚀 Quick Start
 
 ```bash
-# 1. Unzip and enter the folder
 unzip accredian-enterprise.zip
 cd accredian-enterprise
-
-# 2. Install dependencies
 npm install
-
-# 3. Run locally
 npm run dev
 # Open http://localhost:3000
-
-# 4. Production build
-npm run build && npm start
 ```
 
 ---
@@ -45,11 +51,9 @@ npm run build && npm start
 ## 📦 Deploy to Vercel
 
 ```bash
-# Option A: CLI
 npm i -g vercel
 vercel
-
-# Option B: Push to GitHub → import at vercel.com (zero config)
+# OR: push to GitHub → import at vercel.com
 ```
 
 ---
@@ -59,134 +63,119 @@ vercel
 ```
 accredian-enterprise/
 ├── app/
-│   ├── layout.tsx              # Root layout + metadata
-│   ├── page.tsx                # Assembles all sections
-│   ├── globals.css             # Base styles
-│   └── api/leads/route.ts      # POST /api/leads — lead capture API
+│   ├── layout.tsx               # Root layout — wraps every page, sets metadata
+│   ├── page.tsx                 # Home page — imports and stacks all sections
+│   ├── globals.css              # Global styles + Tailwind directives
+│   └── api/
+│       └── leads/
+│           └── route.ts         # POST /api/leads — lead capture endpoint
 ├── components/
-│   ├── Navbar.tsx              # Sticky nav, active-section highlight, mobile menu
-│   ├── Hero.tsx                # Light blue card, heading, checkmarks, Enquire Now
-│   ├── Stats.tsx               # 10K+ / 200+ / 5K+ with blue pills & dividers
-│   ├── Clients.tsx             # Reliance, HCL, IBM, CRIF, ADP, Bayer logos
-│   ├── AccredianEdge.tsx       # Horizontal circle chain with top/bottom labels
-│   ├── DomainExpertise.tsx     # 3×2+1 icon grid
-│   ├── CourseSegmentation.tsx  # 4 image cards (Program/Industry/Topic/Level)
-│   ├── WhoShouldJoin.tsx       # Blue banner with 4 professional profiles
-│   ├── CATFramework.tsx        # 3 large circles — Concept, Application, Tools
-│   ├── HowItWorks.tsx          # 3 step cards with numbered badges & blue icons
-│   ├── FAQs.tsx                # Left tab selector + right accordion + Enquire Now
-│   ├── Testimonials.tsx        # 2-card slider with ADP/Bayer logos + dot pagination
-│   ├── ContactBanner.tsx       # Blue CTA banner with headset icon + Contact Us
-│   └── Footer.tsx              # Logo, social icons, Enquire Now, links, copyright
+│   ├── Navbar.tsx               # Sticky nav with scroll-spy + mobile menu
+│   ├── Hero.tsx                 # Landing section — headline, checkmarks, CTA
+│   ├── Stats.tsx                # 10K+ / 200+ / 5K+ metrics
+│   ├── Clients.tsx              # Partner logos — Reliance, HCL, IBM etc.
+│   ├── AccredianEdge.tsx        # 7-circle horizontal feature chain
+│   ├── DomainExpertise.tsx      # 7 domain cards in 3×2+1 grid
+│   ├── CourseSegmentation.tsx   # 4 course-type cards
+│   ├── WhoShouldJoin.tsx        # Blue banner — 4 professional profiles
+│   ├── CATFramework.tsx         # Concept → Application → Tools circles
+│   ├── HowItWorks.tsx           # 3-step process cards
+│   ├── FAQs.tsx                 # Tabbed FAQ with accordion
+│   ├── Testimonials.tsx         # 2-card testimonial slider
+│   ├── ContactBanner.tsx        # Blue CTA strip
+│   ├── Footer.tsx               # Links, socials, address, copyright
+│   ├── EnquireModal.tsx         # Split-layout lead capture modal
+│   └── ModalProvider.tsx        # React Context for global modal state
 ├── tailwind.config.ts
 ├── next.config.mjs
-└── tsconfig.json
+├── tsconfig.json
+└── package.json
 ```
-
----
-
-## ⚡ Tech Stack
-
-<div align="center">
-
-### 🎨 Frontend
-<img src="https://skillicons.dev/icons?i=html,css,js,react,nextjs,ts,tailwind" />
-<br/>
-<img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white"/>
-
----
-
-### ⚙️ Backend
-<img src="https://skillicons.dev/icons?i=nodejs,express" />
-<br/>
-<img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/>
-<img src="https://img.shields.io/badge/REST_API-FF6C37?style=for-the-badge&logo=postman&logoColor=white"/>
-<img src="https://img.shields.io/badge/WebSockets-000?style=for-the-badge&logo=socketdotio&logoColor=white"/>
-
----
-
-### 🗄️ Database & Tools
-<img src="https://skillicons.dev/icons?i=mysql,mongodb,git" />
-<br/>
-<img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"/>
-<img src="https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=white"/>
-<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"/>
-<img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=black"/>
-
-</div>
 
 ---
 
 ## ✅ Sections Implemented
 
-| Section | Matches Original |
+| Section | Status |
 |---|---|
-| Navbar (sticky, active highlight, mobile) | ✅ |
-| Hero (light blue card, checkmarks, CTA) | ✅ |
-| Stats (Our Track Record) | ✅ |
-| Clients (partner logos) | ✅ |
-| Accredian Edge (circle carousel) | ✅ |
-| Domain Expertise (7 icon cards) | ✅ |
-| Tailored Course Segmentation (4 cards) | ✅ |
-| Who Should Join (blue banner) | ✅ |
-| CAT Framework (3 circles) | ✅ |
-| How It Works (3 step cards) | ✅ |
-| FAQs (tab + accordion) | ✅ |
-| Testimonials (slider + dots) | ✅ |
+| Navbar (sticky, scroll-spy, mobile) | ✅ |
+| Hero | ✅ |
+| Stats — Our Track Record | ✅ |
+| Clients — Our Proven Partnerships | ✅ |
+| Accredian Edge | ✅ |
+| Domain Expertise | ✅ |
+| Course Segmentation | ✅ |
+| Who Should Join | ✅ |
+| CAT Framework | ✅ |
+| How It Works | ✅ |
+| FAQs | ✅ |
+| Testimonials | ✅ |
 | Contact Banner | ✅ |
-| Footer (exact copy) | ✅ |
+| Footer | ✅ |
+| Enquire Now Modal + API | ✅ Bonus |
 
 ---
 
-## 🔌 API: Lead Capture
+## 🔌 API Reference
 
 **POST** `/api/leads`
+
 ```json
-{ "name": "Raj", "email": "raj@co.com", "company": "TechCorp", "phone": "9876543210" }
+{
+  "name": "Raj Sharma",
+  "email": "raj@company.com",
+  "phone": "9876543210",
+  "company": "TechCorp India",
+  "domain": "Gen-AI Mastery",
+  "candidates": "50",
+  "deliveryMode": "Online (Live)",
+  "location": "Gurgaon, Delhi, India"
+}
 ```
 
-**Response 201:**
+**201 Success:**
 ```json
-{ "success": true, "message": "Thank you! We'll contact you soon.", "id": "lead_..." }
+{ "success": true, "message": "Thank you! Our team will contact you soon.", "id": "lead_..." }
+```
+
+**400 Error:**
+```json
+{ "error": "Missing required fields: name, email, company" }
 ```
 
 ---
 
-## 🤖 AI Usage
+## 🤖 AI Usage (Claude)
 
-### Where Claude helped
-- Component scaffolding and structure planning
-- Tailwind/CSS layout patterns for responsive grids
-- TypeScript types for API route and form data
-- SVG icon generation for professional illustrations
+### Where AI helped
+- Component scaffolding and boilerplate generation
+- Repetitive JSX grid/card patterns
+- TypeScript interface definitions
+- Inline SVG icon generation
 
-### What I built / refined manually
-- Pixel-matching color palette (`#1a56db` blue, `#eef4ff` light blue backgrounds)
-- Active navbar scroll-spy logic with `IntersectionObserver`-style offset detection
-- CAT Framework S-curve SVG connectors between circles
-- Testimonial dot-pagination slider state
-- FAQ tab-switching with accordion open/close state
-- All inline `onMouseEnter/Leave` hover effects
-- Fixing all missing `"use client"` directives (critical Next.js 16 App Router requirement)
+### What I built and fixed manually
+- Brand color matching (`#1a56db`, `#e8f0fe`) from screenshots
+- Navbar scroll-spy via `offsetTop` detection
+- CAT Framework S-curve SVG connectors
+- `ModalProvider` React Context pattern
+- Fixed `<Fragment key>` React warning in Stats
+- Fixed missing `"use client"` on 8 components (Next.js Server/Client boundary)
 
 ---
 
-## ⏫ Improvements With More Time
+## ⏫ What I'd Improve With More Time
 
-1. Replace SVG illustrations in Hero & WhoShouldJoin with real `next/image` photos
-2. Add `framer-motion` scroll-reveal animations on section entry
-3. Wire "Enquire Now" / "Contact Us" to real form with email notification via Resend
-4. Add actual client logo images (SVG) instead of text placeholders
-5. Auto-scrolling marquee for the client logos strip
-6. Persist leads to Supabase / PlanetScale instead of in-memory store
-7. Add `sitemap.xml` + `robots.txt` for SEO
-8. Full keyboard navigation & ARIA accessibility audit
-9. Playwright E2E tests for scroll navigation and form submission
+1. Real photos via `next/image` instead of SVG placeholders
+2. `framer-motion` scroll-triggered animations
+3. Email notifications via Resend when form submitted
+4. Supabase (PostgreSQL) to persist leads
+5. Auto-scrolling client logo marquee
+6. `sitemap.xml` + `robots.txt` for SEO
+6. Full ARIA accessibility audit
+7. Playwright E2E tests
 
 ---
 
 <div align="center">
-
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:16213e,50:1a1a2e,100:0D1117&height=100&section=footer" />
-
 </div>
